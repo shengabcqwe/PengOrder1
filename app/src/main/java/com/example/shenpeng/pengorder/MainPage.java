@@ -1,23 +1,20 @@
 package com.example.shenpeng.pengorder;
 
-import android.app.Fragment;
-import android.media.Image;
+
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.widget.Button;
+import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by shenpeng on 4/7/16.
- */
-public class MainPage extends FragmentActivity implements View.OnClickListener {
+
+public class MainPage extends FragmentActivity implements OnClickListener {
     private ViewPager mviewPager;
     private FragmentPagerAdapter mAdapter;
     private List<android.support.v4.app.Fragment> mFragmentList;
@@ -51,12 +48,12 @@ public class MainPage extends FragmentActivity implements View.OnClickListener {
         mviewPager=(ViewPager)findViewById(R.id.pager);
 
         mTab1=(LinearLayout)findViewById(R.id.diancan);
-        mTab1=(LinearLayout)findViewById(R.id.yidian);
-        mTab1=(LinearLayout)findViewById(R.id.pingjia);
+        mTab2=(LinearLayout)findViewById(R.id.yidian);
+        mTab3=(LinearLayout)findViewById(R.id.pingjia);
 
         mImgBt1=(ImageButton)findViewById(R.id.bt_diancan);
-        mImgBt1=(ImageButton)findViewById(R.id.bt_yidian);
-        mImgBt1=(ImageButton)findViewById(R.id.bt_pingjia);
+        mImgBt2=(ImageButton)findViewById(R.id.bt_yidian);
+        mImgBt3=(ImageButton)findViewById(R.id.bt_pingjia);
 
         mFragmentList=new ArrayList<android.support.v4.app.Fragment>();
         android.support.v4.app.Fragment mFrg1=new fragment1();
