@@ -72,14 +72,14 @@ public boolean addUser(String name,String password){
     String str ="insert into tb_user values(?,?)";
         MainActivity main=new MainActivity();
         db=SQLiteDatabase.openOrCreateDatabase(this.getFilesDir().toString()+"/login.dbs",null);
-        main.db=db;
+        MainActivity.db =db;
         try{
             db.execSQL(str,new String[]{name,password});
             return true;
         }catch (SQLException e){
             main.createDb();
         }return false;
-    };
+    }
 
 
 }

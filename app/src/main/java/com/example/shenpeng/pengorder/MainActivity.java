@@ -82,7 +82,7 @@ public class MainActivity extends Activity {
                     public void onClick(DialogInterface dialog, int which) {
                         //跳转到登陆界面
                         Intent in = new Intent();
-                        in.setClass(MainActivity.this, Seclect.class);
+                        in.setClass(MainActivity.this, MainPage.class);
                         startActivity(in);
                     }};new AlertDialog.Builder(MainActivity.this).setTitle("正确").setMessage("登陆成功,欢迎您的光临").setPositiveButton("开始点菜",dc).show();
 

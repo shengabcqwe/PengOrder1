@@ -19,8 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity"></activity>
-        <activity android:name=".Seclect"></activity>
-        <activity android:name=".MenuPresent"></activity>
+        <activity android:name=".MainPage"></activity>
     </application>
 
 </manifest>
