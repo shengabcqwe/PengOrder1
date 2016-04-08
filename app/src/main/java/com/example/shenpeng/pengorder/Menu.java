@@ -4,7 +4,7 @@ package com.example.shenpeng.pengorder;
 public class Menu {
     private String name;
     private int imageId;
-    private int price;
+    private String price;
     private int number=0;
 
     @Override
@@ -15,7 +15,7 @@ public class Menu {
                   ", price=" + price +
                  '}';
              }
-    public Menu(String name,int imageId,int price){
+    public Menu(String name,int imageId,String price){
         this.name=name;
         this.imageId=imageId;
         this.price=price;
@@ -26,7 +26,7 @@ public class Menu {
     public  int getImageId(){
         return imageId;
     }
-    public int getPrice(){
+    public String getPrice(){
         return price;
     }
     public int getnumber(){return number;}

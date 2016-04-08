@@ -1,14 +1,19 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+    <ImageView
+        android:id="@+id/menu_image"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        />
+    <RelativeLayout
                  android:layout_width="match_parent"
                  android:layout_height="match_parent"
                  android:background="#fff"
                  android:descendantFocusability="blocksDescendants"
            >
-    <ImageView
-        android:id="@+id/menu_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+
        <TextView
                android:id="@+id/menu_name"
                 android:layout_width="wrap_content"
@@ -18,15 +23,26 @@
                 android:text="商品名称"
                 android:textColor="#000"
                 />
+        <TextView
+            android:id="@+id/menu_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_margin="10dp"
+            android:text="单价:"
+            android:textColor="#000"
+            android:layout_toRightOf="@id/menu_name"
+            android:gravity="right"
+            />
         <ImageButton
                 android:id="@+id/menu_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                android:src="@drawable/add"
+                android:src="@drawable/sub"
                 android:layout_below="@+id/menu_name"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 />
         <TextView
                 android:id="@+id/menu_num"
@@ -35,34 +51,31 @@
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
                 android:textColor="#000"
-                android:layout_margin="5dp"
+                android:layout_margin="12dp"
                 android:layout_toRightOf="@+id/menu_add"
                 android:layout_below="@id/menu_name"
-
-                />
+            />
         <ImageButton
                 android:id="@+id/menu_sub"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                android:src="@drawable/sub"
+                android:src="@drawable/add"
                 android:layout_below="@id/menu_name"
                 android:layout_toRightOf="@id/menu_num"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
                 />
-        <TextView
-                android:id="@+id/menu_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:layout_margin="10dp"
-                android:text="0"
-                android:textColor="#000"
-                android:layout_toRightOf="@id/menu_name"
-                />
-          <ListView
-        android:id="@+id/menu_present"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></ListView>
+        <Button
+            android:id="@+id/order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/menu_sub"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="10dp"
+            android:text="加入菜单"
+            android:textColor="#00ff04"
+            android:textSize="18dp"
+            android:textStyle="bold"/>
 
-    </RelativeLayout>
+</RelativeLayout>
+</LinearLayout>

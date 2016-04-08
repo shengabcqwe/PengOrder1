@@ -1,3 +1,4 @@
+/**
 package com.example.shenpeng.pengorder;
 
 
@@ -14,9 +15,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by shenpeng on 3/1/16.
- */
+
 
 public class MenuPresent extends Activity implements View.OnClickListener {
     private List<Menu> menuList = new ArrayList<Menu>();
@@ -25,9 +24,9 @@ public class MenuPresent extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu_present);
+        setContentView(R.layout.page1);
         initMenu();
-        ListView listView = (ListView) findViewById(R.id.menu_present);
+        ListView listView = (ListView) findViewById(R.id.menu);
         listView.setAdapter(adapter);
         adapter.setOnAddNum(this);
         adapter.setOnSubNum(this);
@@ -43,30 +42,40 @@ public class MenuPresent extends Activity implements View.OnClickListener {
 
 
     private void initMenu() {
-        Menu daxia = new Menu("鲜炒大虾", R.drawable.daxia, 56);
+        Menu daxia = new Menu("鲜炒大虾", R.drawable.daxia,"56元/份");
         menuList.add(daxia);
-        Menu doufu = new Menu("麻婆豆腐", R.drawable.doufu, 18);
+        Menu doufu = new Menu("麻婆豆腐", R.drawable.doufu, "18元/份");
         menuList.add(doufu);
-        Menu huanggua = new Menu("刀拍黄瓜", R.drawable.huanggua, 16);
+        Menu huanggua = new Menu("刀拍黄瓜", R.drawable.huanggua, "16元/份");
         menuList.add(huanggua);
-        Menu jidan = new Menu("开胃鸡蛋", R.drawable.jidan, 20);
+        Menu jidan = new Menu("开胃鸡蛋", R.drawable.jidan, "20元/份");
         menuList.add(jidan);
-        Menu jiding = new Menu("宫保鸡丁", R.drawable.jiding, 26);
+        Menu jiding = new Menu("宫保鸡丁", R.drawable.jiding, "26元/份");
         menuList.add(jiding);
-        Menu jipai = new Menu("碳烤鸡排", R.drawable.jipai, 12);
+        Menu jipai = new Menu("碳烤鸡排", R.drawable.jipai, "12元/份");
         menuList.add(jipai);
-        Menu niurou = new Menu("小炒牛肉", R.drawable.niurou, 38);
+        Menu niurou = new Menu("小炒牛肉", R.drawable.niurou, "38元/份");
         menuList.add(niurou);
-        Menu roupian = new Menu("水煮肉片", R.drawable.roupian, 24);
+        Menu roupian = new Menu("水煮肉片", R.drawable.roupian, "24元/份");
         menuList.add(roupian);
-        Menu shousiji = new Menu("手撕鸡", R.drawable.shousiji, 32);
+        Menu shousiji = new Menu("手撕鸡", R.drawable.shousiji, "32元/份");
         menuList.add(shousiji);
-        Menu tudousi = new Menu("酸辣土豆丝", R.drawable.tudousi, 18);
+        Menu tudousi = new Menu("酸辣土豆丝", R.drawable.tudousi, "15元/份");
         menuList.add(tudousi);
-        Menu xiguazhi = new Menu("西瓜汁", R.drawable.xiguazhi, 8);
+        Menu xiguazhi = new Menu("西瓜汁", R.drawable.xiguazhi, "8元/份");
         menuList.add(xiguazhi);
-        Menu yangzhou = new Menu("扬州炒饭", R.drawable.yangzhou, 16);
+        Menu pingguozhi = new Menu("苹果汁", R.drawable.pingguo, "8元/份");
+        menuList.add(pingguozhi);
+        Menu ningmeng = new Menu("柠檬汁", R.drawable.ningmeng, "8元/份");
+        menuList.add(ningmeng);
+        Menu naicha = new Menu("奶茶", R.drawable.naicha, "8元/份");
+        menuList.add(naicha);
+        Menu kafei = new Menu("咖啡", R.drawable.kafei, "8元/份");
+        menuList.add(kafei);
+        Menu yangzhou = new Menu("扬州炒饭", R.drawable.yangzhou, "16元/份");
         menuList.add(yangzhou);
+        Menu niurouchaofan = new Menu("牛肉炒饭", R.drawable.niurouchaofan, "16元/份");
+        menuList.add(niurouchaofan);
     }
 
 

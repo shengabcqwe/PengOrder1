@@ -5,6 +5,7 @@ import android.content.Context;
 import android.media.Image;
 import android.view.*;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,17 +20,21 @@ public class MenuAdapter extends ArrayAdapter<Menu> {
     private int resourceId;
     private  View.OnClickListener onAddNum;
     private  View.OnClickListener onSubNum;
+    //数量加减按钮监听
     public void setOnAddNum(View.OnClickListener onAddNum){
            this.onAddNum = onAddNum;
        }
-
-           public void setOnSubNum(View.OnClickListener onSubNum){
+    public void setOnSubNum(View.OnClickListener onSubNum){
            this.onSubNum = onSubNum;
        }
-    public MenuAdapter(Context context,int textViewResourceId,List<Menu> objects){
-        super(context,textViewResourceId,objects);
-        resourceId=textViewResourceId;
+
+
+    public MenuAdapter(Context context,int resource, List<Menu> objects) {
+        super(context,resource, objects);
+        resourceId=resource;
+
     }
+
     @Override
     public View getView(int position,View convertView,ViewGroup parent){
         Menu menu =getItem(position);
@@ -46,16 +51,18 @@ public class MenuAdapter extends ArrayAdapter<Menu> {
             viewHolder.menuAdd.setOnClickListener(onAddNum);
             viewHolder.menuSub=(ImageButton)view.findViewById(R.id.menu_sub);
             viewHolder.menuSub.setOnClickListener(onSubNum);
+            viewHolder.order=(Button)view.findViewById(R.id.order);
+            view.setTag(viewHolder);
         }
         else{view =convertView;
         viewHolder=(ViewHolder)view.getTag();}
         viewHolder.menuImage.setImageResource(menu.getImageId());
         viewHolder.menuName.setText(menu.getName());
         viewHolder.menuPrice.setText(menu.getPrice());
-        viewHolder.menuNumber.setText(menu.getnumber());
+        String num=Integer.toString(menu.getnumber());
+        viewHolder.menuNumber.setText(num);
         viewHolder.menuAdd.setTag(1);
         viewHolder.menuSub.setTag(2);
-        view.setTag(viewHolder);
         return view;
     }
     class ViewHolder{
@@ -64,8 +71,9 @@ public class MenuAdapter extends ArrayAdapter<Menu> {
         TextView menuNumber;
         TextView menuPrice;
       //增减商品数量
-        private ImageButton menuAdd;
-        private ImageButton menuSub;
+         ImageButton menuAdd;
+         ImageButton menuSub;
+         Button order;
      }
 }
 /**
