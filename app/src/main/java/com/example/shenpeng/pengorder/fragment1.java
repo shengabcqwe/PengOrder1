@@ -2,10 +2,13 @@ package com.example.shenpeng.pengorder;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,19 +16,70 @@ import java.util.List;
 /**
  * Created by shenpeng on 4/8/16.
  */
-public class fragment1 extends Fragment {
+public class fragment1 extends Fragment implements View.OnClickListener {
 
     private List<Menu> menulist=new ArrayList<Menu>();
+    private MenuAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.page1,container,false);
         initmenu();
-        MenuAdapter adapter=new MenuAdapter(getContext(),R.layout.menu_item,menulist);
         ListView listView=(ListView)view.findViewById(R.id.menu);
+        adapter=new MenuAdapter(getContext(),R.layout.menu_item,menulist);
         listView.setAdapter(adapter);
+        adapter.setOnAddNum(this);
+        adapter.setOnSubNum(this);
+        adapter.setOrder(this);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
         return view;
     }
+
+    //重点分析学习点击事件
+    public void onClick(View view) {
+        //这行不懂
+        Object tag = view.getTag();
+        switch (view.getId()) {
+            case R.id.menu_add:
+                if (tag != null && tag instanceof Integer) {
+                    int position = (Integer) tag;
+                    int num = menulist.get(position).getnumber();
+                    num++;
+                    menulist.get(position).setNumber(num);
+                    //更新adapter的数据
+                    adapter.notifyDataSetChanged();
+                }
+                break;
+            case R.id.menu_sub: //点击减少数量按钮 ，执行相应的处理
+                // 获取 Adapter 中设置的 Tag
+                if (tag != null && tag instanceof Integer) {
+                    int position = (Integer) tag;
+                    //更改集合的数据
+                    int num = menulist.get(position).getnumber();
+                    if (num > 0) {
+                        num--;
+                        menulist.get(position).setNumber(num);
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+                break;
+            case R.id.order:
+                if (tag != null && tag instanceof Integer) {
+                    int position = (Integer) tag;
+                    int num = menulist.get(position).getnumber();
+                    if(num==0)  {new AlertDialog.Builder(this.getContext()).setTitle("点餐失败").setMessage("请您选择餐品数量.").setPositiveButton("确定",null).show(); }
+                    else if (num>0) {new AlertDialog.Builder(this.getContext()).setTitle("点餐成功").setMessage(menulist.get(position).getnumber()+"份"+menulist.get(position).getName()+"已加入菜单,请到已点餐品中查看.").
+                        setPositiveButton("确定",null).show();}}
+                break;
+        }
+    }
+
 
     private void initmenu() {
         Menu daxia = new Menu("鲜炒大虾", R.drawable.daxia,"56元/份");

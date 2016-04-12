@@ -20,19 +20,20 @@ public class MenuAdapter extends ArrayAdapter<Menu> {
     private int resourceId;
     private  View.OnClickListener onAddNum;
     private  View.OnClickListener onSubNum;
-    //数量加减按钮监听
+    private  View.OnClickListener order;
+
     public void setOnAddNum(View.OnClickListener onAddNum){
-           this.onAddNum = onAddNum;
-       }
+        this.onAddNum = onAddNum;
+    }
     public void setOnSubNum(View.OnClickListener onSubNum){
-           this.onSubNum = onSubNum;
-       }
+        this.onSubNum = onSubNum;
+    }
+    public void setOrder(View.OnClickListener order){this.order=order;}
 
 
     public MenuAdapter(Context context,int resource, List<Menu> objects) {
         super(context,resource, objects);
         resourceId=resource;
-
     }
 
     @Override
@@ -49,20 +50,22 @@ public class MenuAdapter extends ArrayAdapter<Menu> {
             viewHolder.menuPrice=(TextView)view.findViewById(R.id.menu_price);
             viewHolder.menuAdd=(ImageButton)view.findViewById(R.id.menu_add);
             viewHolder.menuAdd.setOnClickListener(onAddNum);
-            viewHolder.menuSub=(ImageButton)view.findViewById(R.id.menu_sub);
+            viewHolder.menuSub=(ImageButton) view.findViewById(R.id.menu_sub);
             viewHolder.menuSub.setOnClickListener(onSubNum);
             viewHolder.order=(Button)view.findViewById(R.id.order);
+            viewHolder.order.setOnClickListener(order);
             view.setTag(viewHolder);
         }
         else{view =convertView;
-        viewHolder=(ViewHolder)view.getTag();}
+            viewHolder=(ViewHolder)view.getTag();}
         viewHolder.menuImage.setImageResource(menu.getImageId());
         viewHolder.menuName.setText(menu.getName());
         viewHolder.menuPrice.setText(menu.getPrice());
-        String num=Integer.toString(menu.getnumber());
-        viewHolder.menuNumber.setText(num);
-        viewHolder.menuAdd.setTag(1);
-        viewHolder.menuSub.setTag(2);
+        int num=menu.getnumber();
+        viewHolder.menuNumber.setText(num + "");
+        viewHolder.menuAdd.setTag(getPosition(menu));
+        viewHolder.menuSub.setTag(getPosition(menu));
+        viewHolder.order.setTag(getPosition(menu));
         return view;
     }
     class ViewHolder{
@@ -71,9 +74,9 @@ public class MenuAdapter extends ArrayAdapter<Menu> {
         TextView menuNumber;
         TextView menuPrice;
       //增减商品数量
-         ImageButton menuAdd;
-         ImageButton menuSub;
-         Button order;
+        ImageButton menuAdd;
+        ImageButton menuSub;
+        Button order;
      }
 }
 /**
