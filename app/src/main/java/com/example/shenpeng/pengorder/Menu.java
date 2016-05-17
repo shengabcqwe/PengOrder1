@@ -6,6 +6,7 @@ public class Menu {
     private int imageId;
     private String price;
     private int number=0;
+    private int score=0;
 
     @Override
         public String toString() {
@@ -15,10 +16,23 @@ public class Menu {
                   ", price=" + price +
                  '}';
              }
-    public Menu(String name,int imageId,String price){
+    public Menu(String name,int imageId,String price,int score){
         this.name=name;
         this.imageId=imageId;
         this.price=price;
+        this.score=score;
+    }
+    public Menu(String name,int imageId,String price,int score,int number){
+        this.name=name;
+        this.imageId=imageId;
+        this.price=price;
+        this.score=score;
+        this.number=number;
+    }
+    public Menu(String name,int imageId,int number){
+        this.name=name;
+        this.imageId=imageId;
+        this.number=number;
     }
     public String getName(){
         return name;
@@ -30,7 +44,9 @@ public class Menu {
         return price;
     }
     public int getnumber(){return number;}
+    public int getScore(){return score;}
     public  void  setNumber(int number){this.number=number;}
+    public  void  setScore(int score){this.score=score;}
 }
 
 /**public class Menu{

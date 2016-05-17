@@ -58,6 +58,7 @@ public class RegisterActivity extends Activity{
                             }
                         };
                         new AlertDialog.Builder(RegisterActivity.this).setTitle("成功").setMessage("注册成功").setPositiveButton("登陆", ss).show();
+                        addUser(name,password1);
                     } else {
                         new AlertDialog.Builder(RegisterActivity.this).setTitle("错误").setMessage("请重新注册").setPositiveButton("重新注册", null).show();
                     }

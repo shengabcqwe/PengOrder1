@@ -41,7 +41,8 @@
            android:layout_marginTop="30dp"
            android:textSize="25dp"
            android:hint="请输入您的密码"
-           android:textColor="#0c0c0d"/>
+           android:textColor="#0c0c0d"
+           android:inputType="textPassword"/>
    </TableRow>
        </TableLayout>
     <TableLayout
